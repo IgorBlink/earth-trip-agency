@@ -43,41 +43,94 @@ export default function BookingForm() {
 
   if (isSubmitted) {
     return (
-      <section id="booking" className="py-20 px-4 bg-gradient-to-b from-indigo-900 to-black">
-        <div className="max-w-4xl mx-auto text-center">
-          <Card className="bg-gradient-to-br from-green-900/60 to-blue-900/60 border-green-500/50">
-            <CardContent className="p-12">
-              <div className="text-6xl mb-6">🎉</div>
-              <h2 className="text-4xl font-bold text-green-400 mb-4">
-                Заявка отправлена!
+      <section id="booking" className="relative py-20 px-4 bg-black overflow-hidden">
+        {/* Matrix rain effect */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='15' font-family='monospace' font-size='12' fill='%2300ff00' text-anchor='middle'%3E1%3C/text%3E%3C/svg%3E")`,
+            animation: 'matrix-fall 3s linear infinite'
+          }}></div>
+        </div>
+        
+        <div className="relative max-w-4xl mx-auto text-center">
+          <Card className="relative bg-black border-4 border-green-500">
+            {/* Success glow */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-lime-600 rounded-lg blur opacity-50 animate-pulse"></div>
+            
+            <CardContent className="relative p-12">
+              <div className="text-6xl mb-6 animate-bounce">🎉</div>
+              <h2 className="text-4xl font-bold text-green-400 mb-4 font-mono animate-pulse">
+                BOOKING CONFIRMED! POGGERS!
               </h2>
-              <p className="text-xl text-cyan-300 mb-6">
-                Наш менеджер свяжется с вами телепатически в течение 24 земных часов
+              <p className="text-xl text-cyan-300 mb-6 font-mono">
+                Our manager will contact you telepathically within 24 Earth hours 📡
               </p>
-              <div className="space-y-2 text-yellow-300">
-                <p>📡 Сигнал отправлен в центр управления</p>
-                <p>🛸 НЛО уже готовится к вылету</p>
-                <p>🎫 Билеты будут материализованы автоматически</p>
+              <div className="space-y-2 text-yellow-300 font-mono">
+                <p className="animate-bounce">📡 Signal sent to command center</p>
+                <p className="animate-bounce" style={{animationDelay: '0.5s'}}>🛸 UFO already preparing for departure</p>
+                <p className="animate-bounce" style={{animationDelay: '1s'}}>🎫 Tickets will be materialized automatically</p>
+              </div>
+              
+              <div className="mt-8 flex justify-center space-x-4 text-sm">
+                <span className="bg-green-500/20 border border-green-500 px-3 py-1 rounded text-green-300 font-mono animate-pulse">
+                  ✅ EPIC WIN
+                </span>
+                <span className="bg-blue-500/20 border border-blue-500 px-3 py-1 rounded text-blue-300 font-mono animate-pulse">
+                  🚀 STONKS
+                </span>
+                <span className="bg-yellow-500/20 border border-yellow-500 px-3 py-1 rounded text-yellow-300 font-mono animate-pulse">
+                  💯 BASED
+                </span>
               </div>
             </CardContent>
           </Card>
         </div>
+        
+        <style jsx>{`
+          @keyframes matrix-fall {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+          }
+        `}</style>
       </section>
     );
   }
 
   return (
-    <section id="booking" className="py-20 px-4 bg-gradient-to-b from-indigo-900 to-black">
-      <div className="max-w-4xl mx-auto">
+    <section id="booking" className="relative py-20 px-4 bg-black overflow-hidden">
+      {/* Retro Grid Background */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(#ff00ff 1px, transparent 1px),
+            linear-gradient(90deg, #ff00ff 1px, transparent 1px)
+          `,
+          backgroundSize: '30px 30px',
+          animation: 'grid-pulse 4s ease-in-out infinite'
+        }}></div>
+      </div>
+      
+      {/* Floating Neon Elements */}
+      <div className="absolute top-10 left-10 w-16 h-16 bg-pink-500 rounded-full blur-xl opacity-40 animate-bounce"></div>
+      <div className="absolute top-32 right-20 w-20 h-20 bg-cyan-500 rounded-full blur-lg opacity-30 animate-pulse"></div>
+      <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-yellow-500 rounded-full blur-xl opacity-35 animate-bounce" style={{animationDelay: '1s'}}></div>
+      
+      <div className="relative max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
-            🎫 Форма Бронирования Тура
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 relative">
+            <span className="bg-gradient-to-r from-pink-500 via-cyan-500 to-yellow-500 bg-clip-text text-transparent animate-pulse font-mono">
+              🎮 BOOK UR TRIP NOW! 🎮
+            </span>
+            <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 via-cyan-600 to-yellow-600 rounded-lg blur opacity-30 animate-pulse"></div>
           </h2>
-          <p className="text-xl md:text-2xl text-cyan-300 max-w-3xl mx-auto">
-            Заполните форму и приготовьтесь к самому странному приключению в галактике!
+          <p className="text-xl md:text-2xl text-cyan-300 max-w-3xl mx-auto font-mono">
+            Fill out this form and prepare for the MOST EPIC adventure in the galaxy! 💯
           </p>
-          <div className="mt-4 text-yellow-300">
-            ⚡ Мгновенное подтверждение через квантовую связь
+          <div className="mt-4 text-yellow-300 font-bold text-lg animate-bounce">
+            ⚡ INSTANT CONFIRMATION VIA QUANTUM LINK ⚡
+          </div>
+          <div className="mt-2 text-pink-400 text-sm font-mono">
+            🔥 NO CAP - 100% LEGIT SPACE TRAVEL 🔥
           </div>
         </div>
         
@@ -91,75 +144,101 @@ export default function BookingForm() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-yellow-300 text-lg">
-                    👽 Имя/Позывной/Номер
-                  </Label>
-                  <Input
-                    id="name"
-                    placeholder="Зорг-7, Блип-Блоп, X-Æ-A-12..."
-                    value={formData.name}
-                    onChange={(e) => handleInputChange('name', e.target.value)}
-                    className="bg-black/50 border-cyan-500/50 text-white placeholder-gray-400"
-                    required
-                  />
+            <form onSubmit={handleSubmit} className="relative bg-black/90 backdrop-blur-sm rounded-2xl p-8 border-4 border-pink-500 shadow-2xl space-y-6" style={{
+              boxShadow: '0 0 50px #ff00ff, inset 0 0 50px rgba(255, 0, 255, 0.1)'
+            }}>
+              {/* Form Glow Effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 via-cyan-600 to-yellow-600 rounded-2xl blur opacity-20 animate-pulse"></div>
+              
+              <div className="relative">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-yellow-400 font-mono animate-pulse">🚀 EPIC FORM TIME! 🚀</h3>
+                  <p className="text-pink-400 text-sm mt-2 font-mono">pls fill out correctly or ur trip will be CRINGE 😬</p>
                 </div>
                 
-                <div className="space-y-2">
-                  <Label htmlFor="planet" className="text-yellow-300 text-lg">
-                    🪐 Планета происхождения
-                  </Label>
-                  <Input
-                    id="planet"
-                    placeholder="Альфа Центавра, Вега, Неизвестно..."
-                    value={formData.planet}
-                    onChange={(e) => handleInputChange('planet', e.target.value)}
-                    className="bg-black/50 border-cyan-500/50 text-white placeholder-gray-400"
-                    required
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2 relative">
+                    <Label htmlFor="name" className="text-cyan-300 text-lg font-mono">
+                      👽 NAME (what ur homies call u)
+                    </Label>
+                    <Input
+                      id="name"
+                      placeholder="e.g: Zorg-42 or xX_AlienBoi_Xx"
+                      value={formData.name}
+                      onChange={(e) => handleInputChange('name', e.target.value)}
+                      className="bg-gray-900 border-2 border-pink-500 text-white placeholder-gray-400 font-mono transition-all duration-300"
+                      style={{
+                        boxShadow: '0 0 20px rgba(255, 0, 255, 0.3)'
+                      }}
+                      required
+                    />
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full animate-ping"></div>
+                  </div>
+                  
+                  <div className="space-y-2 relative">
+                    <Label htmlFor="planet" className="text-cyan-300 text-lg font-mono">
+                      🪐 HOME PLANET (where u from bro)
+                    </Label>
+                    <Input
+                      id="planet"
+                      placeholder="Mars, Venus, ur mom's basement..."
+                      value={formData.planet}
+                      onChange={(e) => handleInputChange('planet', e.target.value)}
+                      className="bg-gray-900 border-2 border-pink-500 text-white placeholder-gray-400 font-mono transition-all duration-300"
+                      style={{
+                        boxShadow: '0 0 20px rgba(255, 0, 255, 0.3)'
+                      }}
+                      required
+                    />
+                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full animate-ping"></div>
+                  </div>
                 </div>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="tentacles" className="text-yellow-300 text-lg">
-                    🐙 Количество щупалец/конечностей
+                <div className="space-y-2 relative">
+                  <Label htmlFor="tentacles" className="text-yellow-300 text-lg font-mono">
+                    🦑 TENTACLE COUNT (how many u got?)
                   </Label>
                   <Select onValueChange={(value) => handleInputChange('tentacles', value)} required>
-                    <SelectTrigger className="bg-black/50 border-cyan-500/50 text-white">
-                      <SelectValue placeholder="Выберите количество" />
+                    <SelectTrigger className="bg-gray-900 border-2 border-pink-500 text-white font-mono transition-all duration-300" style={{
+                      boxShadow: '0 0 20px rgba(255, 0, 255, 0.3)'
+                    }}>
+                      <SelectValue placeholder="Pick ur tentacle vibe" />
                     </SelectTrigger>
                     <SelectContent className="bg-black border-cyan-500/50">
-                      <SelectItem value="0">0 (Энергетическое существо)</SelectItem>
-                      <SelectItem value="2">2 (Как у людей)</SelectItem>
-                      <SelectItem value="4">4 (Стандарт)</SelectItem>
-                      <SelectItem value="6">6 (Удобно)</SelectItem>
-                      <SelectItem value="8">8 (Оптимально)</SelectItem>
-                      <SelectItem value="много">Много (Не считал)</SelectItem>
-                      <SelectItem value="переменное">Переменное количество</SelectItem>
+                      <SelectItem value="0">0 (basic humanoid) 🚶</SelectItem>
+                      <SelectItem value="2">2 (standard issue) ✌️</SelectItem>
+                      <SelectItem value="4">4 (getting spicy) 🐙</SelectItem>
+                      <SelectItem value="6">6 (pro gamer mode) 🎮</SelectItem>
+                      <SelectItem value="8">8 (octopus mode) 🐙🐙</SelectItem>
+                      <SelectItem value="много">Many (lost count lol) ♾️</SelectItem>
+                      <SelectItem value="переменное">Variable (mood dependent) 🎭</SelectItem>
                     </SelectContent>
                   </Select>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-ping"></div>
                 </div>
                 
-                <div className="space-y-2">
-                  <Label htmlFor="headSize" className="text-yellow-300 text-lg">
-                    🧠 Размер головы/мозга
+                <div className="space-y-2 relative">
+                  <Label htmlFor="headSize" className="text-yellow-300 text-lg font-mono">
+                    🧠 HEAD SIZE (big brain energy?)
                   </Label>
                   <Select onValueChange={(value) => handleInputChange('headSize', value)} required>
-                    <SelectTrigger className="bg-black/50 border-cyan-500/50 text-white">
-                      <SelectValue placeholder="Выберите размер" />
+                    <SelectTrigger className="bg-gray-900 border-2 border-pink-500 text-white font-mono transition-all duration-300" style={{
+                      boxShadow: '0 0 20px rgba(255, 0, 255, 0.3)'
+                    }}>
+                      <SelectValue placeholder="Choose ur brain size" />
                     </SelectTrigger>
                     <SelectContent className="bg-black border-cyan-500/50">
-                      <SelectItem value="микро">Микро (Как у людей)</SelectItem>
-                      <SelectItem value="стандарт">Стандарт (1 метр)</SelectItem>
-                      <SelectItem value="большой">Большой (2-3 метра)</SelectItem>
-                      <SelectItem value="огромный">Огромный (размер планеты)</SelectItem>
-                      <SelectItem value="виртуальный">Виртуальный</SelectItem>
-                      <SelectItem value="коллективный">Коллективный разум</SelectItem>
+                      <SelectItem value="микро">Smol (but cute) 🥺</SelectItem>
+                      <SelectItem value="стандарт">Normal (human-like) 😐</SelectItem>
+                      <SelectItem value="большой">Large (galaxy brain) 🧠</SelectItem>
+                      <SelectItem value="огромный">HUGE (200 IQ) 🤯</SelectItem>
+                      <SelectItem value="виртуальный">Virtual (in the cloud) ☁️</SelectItem>
+                      <SelectItem value="коллективный">Hive mind (we are legion) 👥</SelectItem>
                     </SelectContent>
                   </Select>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-purple-400 rounded-full animate-ping"></div>
                 </div>
               </div>
               

@@ -1,140 +1,254 @@
+'use client';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+
+const getDangerColor = (level) => {
+  switch(level) {
+    case 'Низкий': return 'text-green-400';
+    case 'Средний': return 'text-yellow-400';
+    case 'Высокий': return 'text-orange-400';
+    case 'Экстремальный': return 'text-red-400';
+    default: return 'text-gray-400';
+  }
+};
 
 export default function EarthCreaturesGuide() {
   const creatures = [
     {
-      emoji: "🐱",
-      name: "Кот (Felis domesticus)",
-      classification: "Мягкий домашний бог",
-      description: "Контролирует 73% интернета. Спит 20 часов в сутки, но каким-то образом управляет людьми. Обладает гипнотическим мурчанием.",
-      dangerLevel: "Критический",
-      abilities: ["Телепатия", "Манипуляция людьми", "Квантовый сон"],
-      habitat: "Коробки, клавиатуры, солнечные пятна"
+      emoji: '/back.png',
+      name: 'Бахредин',
+      classification: 'САМОЕ ЗАВОЗНОЕ ЖИВОТНОЕ НА ПЛАНЕТЕ ЗЕМЛЯ',
+      description: 'Четвероногий раб человека. Виляет хвостом за еду. Лает на всё подряд. IQ = 0.',
+      dangerLevel: 'Низкий',
+      abilities: ['Лай 24/7', 'Поедание носков', 'Слюни везде'],
+      habitat: 'Диван хозяина',
+      memeRating: '🔥🔥🔥'
     },
     {
-      emoji: "🐕",
-      name: "Собака (Canis familiaris)",
-      classification: "Верный компаньон",
-      description: "Единственное существо на планете, которое искренне радуется возвращению хозяина из туалета. Обладает сверхспособностью находить еду.",
-      dangerLevel: "Дружелюбный",
-      abilities: ["Безусловная любовь", "Детекция еды", "Хвостовая сигнализация"],
-      habitat: "Рядом с людьми, в парках, в сердцах"
+      emoji: '🐱',
+      name: 'Кошка',
+      classification: 'Домашний диктатор',
+      description: 'Пушистый тиран. Игнорирует людей, но требует еду. Царапает мебель из принципа.',
+      dangerLevel: 'Средний',
+      abilities: ['Игнор 9000', 'Уничтожение мебели', 'Мяуканье в 3 утра'],
+      habitat: 'Везде, где нельзя',
+      memeRating: '🔥🔥🔥🔥🔥'
     },
     {
-      emoji: "🧹",
-      name: "Пылесос (Aspirator domesticus)",
-      classification: "Местный монстр",
-      description: "Питается шумом и пылью. Кошки считают его главным врагом. Люди используют его для ритуальной очистки территории.",
-      dangerLevel: "Средний",
-      abilities: ["Поглощение мусора", "Генерация шума", "Запугивание котов"],
-      habitat: "Шкафы, под кроватями, в кошмарах котов"
+      emoji: '🐧',
+      name: 'Пингвин',
+      classification: 'Формальная птица',
+      description: 'Птица в смокинге, которая забыла как летать. Ходит как важный чиновник.',
+      dangerLevel: 'Низкий',
+      abilities: ['Скольжение на пузе', 'Групповые обнимашки', 'Стильный вид'],
+      habitat: 'Ледяная тюрьма',
+      memeRating: '🔥🔥🔥🔥'
     },
     {
-      emoji: "🕷️",
-      name: "Паук (Arachnida terrifica)",
-      classification: "Архитектор ужаса",
-      description: "Строит ловушки из невидимых нитей. Способен заставить 200-килограммового человека кричать как ребенок. Мастер неожиданных появлений.",
-      dangerLevel: "Психологический",
-      abilities: ["Телепортация", "Архитектура", "Психологическое воздействие"],
-      habitat: "Углы, ванные комнаты, кошмары"
+      emoji: '🦒',
+      name: 'Жираф',
+      classification: 'Высокое недоразумение',
+      description: 'Лошадь, которая слишком много вытягивала шею. Видит всё, но молчит.',
+      dangerLevel: 'Низкий',
+      abilities: ['Подглядывание', 'Длинный язык', 'Медленная походка'],
+      habitat: 'Африканская саванна',
+      memeRating: '🔥🔥'
     },
     {
-      emoji: "🦆",
-      name: "Утка (Quackus philosophicus)",
-      classification: "Водный философ",
-      description: "Задает глубокие вопросы типа 'кря?'. Обладает водонепроницаемостью и способностью выглядеть мудро, ничего не делая.",
-      dangerLevel: "Мудрый",
-      abilities: ["Философские размышления", "Водная левитация", "Хлебная телепатия"],
-      habitat: "Пруды, парки, философские дискуссии"
+      emoji: '🐙',
+      name: 'Осьминог',
+      classification: 'Морской хакер',
+      description: 'Восьминогий гений. Взламывает аквариумы. Подозрительно умный. Возможно, шпион.',
+      dangerLevel: 'Высокий',
+      abilities: ['Невидимость', 'Взлом замков', 'Побег из тюрьмы'],
+      habitat: 'Секретные лаборатории',
+      memeRating: '🔥🔥🔥🔥🔥'
     },
     {
-      emoji: "🐧",
-      name: "Пингвин (Tuxedus formalis)",
-      classification: "Формальный джентльмен",
-      description: "Всегда одет по дресс-коду. Ходит как важный бизнесмен, но живет в холодильнике. Мастер групповых селфи.",
-      dangerLevel: "Элегантный",
-      abilities: ["Формальный стиль", "Групповая синхронизация", "Ледяная харизма"],
-      habitat: "Антарктида, зоопарки, деловые встречи"
+      emoji: '🦅',
+      name: 'Орёл',
+      classification: 'Воздушный снайпер',
+      description: 'Птица с комплексом превосходства. Символ свободы, но сидит в зоопарке.',
+      dangerLevel: 'Высокий',
+      abilities: ['Снайперское зрение', 'Воздушные атаки', 'Позирование'],
+      habitat: 'Флаги стран',
+      memeRating: '🔥🔥🔥'
     },
     {
-      emoji: "🦅",
-      name: "Орел (Aquila majesticus)",
-      classification: "Небесный надзиратель",
-      description: "Профессиональный наблюдатель. Видит мышь с высоты 3 км, но не может найти ключи от машины. Символ свободы и зоркости.",
-      dangerLevel: "Величественный",
-      abilities: ["Сверхзрение", "Воздушное доминирование", "Символическая значимость"],
-      habitat: "Горы, гербы, мотивационные плакаты"
+      emoji: '🐘',
+      name: 'Слон',
+      classification: 'Ходячий танк',
+      description: 'Серый гигант с пылесосом вместо носа. Помнит всё, включе твои грехи.',
+      dangerLevel: 'Высокий',
+      abilities: ['Память как у компьютера', 'Хобот-манипулятор', 'Топтание врагов'],
+      habitat: 'Цирки и зоопарки',
+      memeRating: '🔥🔥🔥🔥'
     },
     {
-      emoji: "🐙",
-      name: "Осьминог (Octopus genialis)",
-      classification: "Подводный гений",
-      description: "Имеет 8 рук и 3 сердца, но все равно не может обнять всех, кого любит. Мастер камуфляжа и решения головоломок.",
-      dangerLevel: "Интеллектуальный",
-      abilities: ["Мультитаскинг", "Камуфляж", "Решение проблем"],
-      habitat: "Океаны, аквариумы, научные лаборатории"
+      emoji: '🦈',
+      name: 'Акула',
+      classification: 'Морской терминатор',
+      description: 'Плавающая пила с зубами. Ест всё, что движется. Боится дельфинов.',
+      dangerLevel: 'Экстремальный',
+      abilities: ['Режущие зубы', 'Турбо-плавание', 'Запах крови'],
+      habitat: 'Кошмары пловцов',
+      memeRating: '🔥🔥🔥🔥🔥'
+    },
+    {
+      emoji: '🐨',
+      name: 'Коала',
+      classification: 'Профессиональный лентяй',
+      description: 'Сонное чудо природы. Спит 20 часов в день. Ест наркотические листья.',
+      dangerLevel: 'Низкий',
+      abilities: ['Сон мастер-класс', 'Поедание наркоты', 'Милый вид'],
+      habitat: 'Эвкалиптовый рай',
+      memeRating: '🔥🔥🔥🔥🔥'
     }
   ];
 
-  const getDangerColor = (level) => {
-    switch(level) {
-      case "Дружелюбный": return "text-green-400";
-      case "Средний": return "text-yellow-400";
-      case "Критический": return "text-red-400";
-      case "Психологический": return "text-purple-400";
-      case "Мудрый": return "text-blue-400";
-      case "Элегантный": return "text-cyan-400";
-      case "Величественный": return "text-orange-400";
-      case "Интеллектуальный": return "text-pink-400";
-      default: return "text-gray-400";
-    }
-  };
-
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-purple-900 to-black">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-4 bg-black relative overflow-hidden">
+      {/* Animated background */}
+      <div className="absolute inset-0">
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 50%, rgba(255, 0, 255, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.3) 0%, transparent 50%),
+              radial-gradient(circle at 40% 80%, rgba(255, 255, 0, 0.3) 0%, transparent 50%)
+            `,
+            animation: 'float 15s ease-in-out infinite'
+          }}
+        ></div>
+      </div>
+
+      {/* Matrix rain effect */}
+      <div className="absolute inset-0 opacity-10">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-green-400 font-mono text-xs"
+            style={{
+              left: `${i * 5}%`,
+              animation: `matrix-rain ${Math.random() * 3 + 2}s linear infinite`,
+              animationDelay: `${Math.random() * 2}s`
+            }}
+          >
+            {Array.from({length: 20}, () => Math.random() > 0.5 ? '1' : '0').join('')}
+          </div>
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Title */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-pink-400 to-purple-500 bg-clip-text text-transparent">
-            📚 Справочник Существ Земли
+          <h2 
+            className="text-5xl md:text-7xl font-black mb-6"
+            style={{
+              background: 'linear-gradient(45deg, #00ff00, #ff00ff, #00ffff, #ffff00)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundSize: '400% 400%',
+              animation: 'rainbow 4s ease infinite',
+              textShadow: '0 0 30px #00ff00',
+              fontFamily: 'Impact, Arial Black, sans-serif',
+              letterSpacing: '0.1em'
+            }}
+          >
+            СПРАВОЧНИК СУЩЕСТВ
           </h2>
-          <p className="text-xl md:text-2xl text-cyan-300 max-w-4xl mx-auto">
-            Полный каталог странных обитателей этой планеты
-          </p>
-          <div className="mt-4 text-yellow-300">
-            🔬 Составлено нашими ксенобиологами
+          
+          <div className="bg-black border-4 border-green-400 p-4 inline-block relative transform rotate-1">
+            <div className="absolute -top-2 -left-2 w-6 h-6 bg-green-400 animate-pulse"></div>
+            <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-400 animate-pulse"></div>
+            <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-green-400 animate-pulse"></div>
+            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-green-400 animate-pulse"></div>
+            
+            <p className="text-green-300 font-bold text-xl font-mono">
+         
+            </p>
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Creatures Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {creatures.map((creature, index) => (
-            <Card key={index} className="bg-gradient-to-br from-gray-900/80 to-purple-900/60 border-pink-500/40 hover:border-pink-400/80 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-pink-500/20">
-              <CardHeader className="text-center">
-                <div className="text-4xl mb-2">{creature.emoji}</div>
-                <CardTitle className="text-lg text-yellow-300 leading-tight">
+            <Card 
+              key={index} 
+              className="bg-gradient-to-br from-green-900/80 to-blue-900/80 border-4 border-white hover:border-green-400 transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
+              style={{
+                boxShadow: '0 0 20px rgba(0, 255, 0, 0.3)'
+              }}
+            >
+              <CardHeader className="bg-black/60">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-5xl animate-bounce" style={{ animationDelay: `${index * 0.15}s` }}>
+                    {creature.emoji.startsWith('/') ? (
+                      <img 
+                         src={creature.emoji} 
+                         alt={creature.name} 
+                         className="w-24 h-24 object-cover rounded-lg border-2 border-yellow-400" 
+                         style={{ filter: 'drop-shadow(0 0 10px #ffff00)' }}
+                       />
+                    ) : (
+                      creature.emoji
+                    )}
+                  </span>
+                  <div className="text-right">
+                    <span 
+                      className={`px-3 py-1 rounded-full text-xs font-black border-2 ${getDangerColor(creature.dangerLevel)}`}
+                      style={{
+                        backgroundColor: 'black',
+                        borderColor: 'currentColor',
+                        textShadow: '0 0 5px currentColor'
+                      }}
+                    >
+                      {creature.dangerLevel}
+                    </span>
+                    <div className="text-xs text-gray-300 mt-1">МЕМНОСТЬ: {creature.memeRating}</div>
+                  </div>
+                </div>
+                <CardTitle 
+                  className="text-xl font-black"
+                  style={{
+                    color: '#00ff00',
+                    textShadow: '0 0 10px #00ff00',
+                    fontFamily: 'Arial Black, sans-serif'
+                  }}
+                >
                   {creature.name}
                 </CardTitle>
-                <CardDescription className="text-pink-400 font-semibold">
+                <CardDescription 
+                  className="font-bold"
+                  style={{
+                    color: '#00ffff',
+                    textShadow: '0 0 5px #00ffff'
+                  }}
+                >
                   {creature.classification}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-gray-200 text-sm leading-relaxed">
-                  {creature.description}
-                </p>
+              <CardContent className="p-4">
+                <div className="bg-black/70 p-3 border-2 border-yellow-400 mb-4">
+                  <p className="text-white font-bold text-sm">
+                    {creature.description}
+                  </p>
+                </div>
                 
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-gray-400">Уровень опасности:</span>
-                    <span className={`text-xs font-bold ${getDangerColor(creature.dangerLevel)}`}>
-                      {creature.dangerLevel}
-                    </span>
-                  </div>
-                  
+                <div className="space-y-3">
                   <div>
-                    <div className="text-xs text-gray-400 mb-1">Способности:</div>
+                    <h4 className="text-sm font-black text-purple-400 mb-2" style={{ textShadow: '0 0 5px #a855f7' }}>
+                      СПОСОБНОСТИ:
+                    </h4>
                     <div className="flex flex-wrap gap-1">
                       {creature.abilities.map((ability, idx) => (
-                        <span key={idx} className="text-xs bg-purple-700/50 text-purple-200 px-2 py-1 rounded">
+                        <span 
+                          key={idx} 
+                          className="px-2 py-1 bg-purple-600 text-white text-xs rounded border-2 border-purple-400 font-bold"
+                          style={{
+                            boxShadow: '0 0 10px rgba(168, 85, 247, 0.5)'
+                          }}
+                        >
                           {ability}
                         </span>
                       ))}
@@ -142,8 +256,17 @@ export default function EarthCreaturesGuide() {
                   </div>
                   
                   <div>
-                    <div className="text-xs text-gray-400">Среда обитания:</div>
-                    <div className="text-xs text-green-300">{creature.habitat}</div>
+                    <h4 className="text-sm font-black text-blue-400 mb-1" style={{ textShadow: '0 0 5px #3b82f6' }}>
+                      СРЕДА ОБИТАНИЯ:
+                    </h4>
+                    <span 
+                      className="text-blue-300 text-sm font-bold bg-blue-900/50 px-2 py-1 rounded border border-blue-400"
+                      style={{
+                        textShadow: '0 0 5px #93c5fd'
+                      }}
+                    >
+                      {creature.habitat}
+                    </span>
                   </div>
                 </div>
               </CardContent>
@@ -151,30 +274,69 @@ export default function EarthCreaturesGuide() {
           ))}
         </div>
         
+        {/* Stats Section */}
         <div className="mt-16 text-center">
-          <div className="inline-block bg-gradient-to-r from-pink-500/20 to-purple-500/20 rounded-lg p-6 border border-pink-500/30">
-            <h3 className="text-2xl font-bold text-pink-300 mb-4">📊 Статистика Исследований</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div>
-                <div className="text-2xl font-bold text-green-400">{creatures.length}</div>
-                <div className="text-xs text-gray-300">Изученных видов</div>
+          <div className="bg-black border-4 border-white p-8 inline-block relative transform -rotate-1">
+            <div className="absolute -top-3 -left-3 w-8 h-8 bg-white animate-spin"></div>
+            <div className="absolute -top-3 -right-3 w-8 h-8 bg-white animate-spin" style={{ animationDelay: '0.5s' }}></div>
+            <div className="absolute -bottom-3 -left-3 w-8 h-8 bg-white animate-spin" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute -bottom-3 -right-3 w-8 h-8 bg-white animate-spin" style={{ animationDelay: '1.5s' }}></div>
+            
+            <h3 
+              className="text-3xl font-black mb-6"
+              style={{
+                color: '#ff00ff',
+                textShadow: '0 0 15px #ff00ff',
+                fontFamily: 'Arial Black, sans-serif'
+              }}
+            >
+              🧬 НАУЧНЫЕ ФАКТЫ
+            </h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="bg-gradient-to-br from-green-600 to-yellow-600 p-4 border-2 border-white transform rotate-3">
+                <div className="text-3xl font-black text-white">8.7M</div>
+                <div className="text-black font-bold">ВИДОВ</div>
+                <div className="text-xs text-gray-800">На планете</div>
               </div>
-              <div>
-                <div className="text-2xl font-bold text-blue-400">∞</div>
-                <div className="text-xs text-gray-300">Загадок поведения</div>
+              <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-4 border-2 border-white transform -rotate-3">
+                <div className="text-3xl font-black text-white">99%</div>
+                <div className="text-yellow-300 font-bold">НЕ ИЗУЧЕНЫ</div>
+                <div className="text-xs text-gray-300">Загадка</div>
               </div>
-              <div>
-                <div className="text-2xl font-bold text-purple-400">95%</div>
-                <div className="text-xs text-gray-300">Дружелюбности</div>
+              <div className="bg-gradient-to-br from-purple-600 to-pink-600 p-4 border-2 border-white transform rotate-3">
+                <div className="text-3xl font-black text-white">∞</div>
+                <div className="text-yellow-300 font-bold">МЕМОВ</div>
+                <div className="text-xs text-gray-300">О животных</div>
               </div>
-              <div>
-                <div className="text-2xl font-bold text-yellow-400">100%</div>
-                <div className="text-xs text-gray-300">Удивления</div>
-              </div>
+            </div>
+            
+            <div className="mt-6 bg-red-600 border-2 border-white p-3 transform rotate-1">
+              <p className="text-white font-black text-lg">
+                ⚠️ ОСТОРОЖНО: Некоторые существа могут быть мемными! ⚠️
+              </p>
             </div>
           </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        @keyframes matrix-rain {
+          0% { transform: translateY(-100vh); opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { transform: translateY(100vh); opacity: 0; }
+        }
+        @keyframes rainbow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
     </section>
   );
 }
